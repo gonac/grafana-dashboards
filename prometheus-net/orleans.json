@@ -758,6 +758,6 @@
     },
     "timezone": "",
     "title": "Orleans (Prometheus)",
-    "uid": "fanout-controller",
+    "uid": "orleans",
     "version": 1
   }
