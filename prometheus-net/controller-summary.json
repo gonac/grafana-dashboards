@@ -16,70 +16,9 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 26,
-    "iteration": 1622799922282,
+    "iteration": 1622806444976,
     "links": [],
     "panels": [
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 0,
-          "y": 0
-        },
-        "id": 11,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.5.5",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "kube_pod_info{namespace=\"fanout\", pod=~\"fanout-helper.*\"}",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "",
-            "refId": "A"
-          }
-        ],
-        "title": "Number of pods",
-        "type": "stat"
-      },
       {
         "cacheTimeout": null,
         "colorBackground": false,
@@ -105,8 +44,8 @@
         },
         "gridPos": {
           "h": 4,
-          "w": 5,
-          "x": 4,
+          "w": 7,
+          "x": 0,
           "y": 0
         },
         "id": 5,
@@ -193,8 +132,8 @@
         },
         "gridPos": {
           "h": 4,
-          "w": 5,
-          "x": 9,
+          "w": 6,
+          "x": 7,
           "y": 0
         },
         "id": 9,
@@ -257,74 +196,101 @@
         "valueName": "current"
       },
       {
-        "cards": {
-          "cardPadding": null,
-          "cardRound": null
-        },
-        "color": {
-          "cardColor": "#b4ff00",
-          "colorScale": "sqrt",
-          "colorScheme": "interpolateOranges",
-          "exponent": 0.5,
-          "mode": "spectrum"
-        },
-        "dataFormat": "tsbuckets",
-        "datasource": "Prometheus",
-        "description": "Does NOT include requests that were not mapped to an ASP.NET Core controller!",
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
         "fieldConfig": {
           "defaults": {},
           "overrides": []
         },
+        "fill": 1,
+        "fillGradient": 0,
         "gridPos": {
-          "h": 12,
-          "w": 10,
-          "x": 14,
+          "h": 11,
+          "w": 11,
+          "x": 13,
           "y": 0
         },
-        "heatmap": {},
-        "hideZeroBuckets": false,
-        "highlightCards": true,
-        "id": 8,
+        "hiddenSeries": false,
+        "id": 11,
         "legend": {
-          "show": false
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
         },
-        "reverseYBuckets": false,
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.5.5",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(increase(http_request_duration_seconds_bucket{instance =~ \"$instances\", controller =~ \"$controllers\"}[$__interval])) by (le)",
-            "format": "heatmap",
+            "exemplar": true,
+            "expr": "count(process_num_threads)",
             "instant": false,
-            "interval": "5m",
-            "intervalFactor": 1,
-            "legendFormat": "{{le}}",
+            "interval": "",
+            "legendFormat": "",
             "refId": "A"
           }
         ],
+        "thresholds": [],
         "timeFrom": null,
+        "timeRegions": [],
         "timeShift": null,
-        "title": "Request duration (controller-handled requests only)",
+        "title": "Number of pods",
         "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
           "show": true,
-          "showHistogram": false
+          "values": []
         },
-        "type": "heatmap",
-        "xAxis": {
-          "show": true
-        },
-        "xBucketNumber": null,
-        "xBucketSize": null,
-        "yAxis": {
-          "decimals": 0,
-          "format": "s",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true,
-          "splitFactor": null
-        },
-        "yBucketBound": "auto",
-        "yBucketNumber": null,
-        "yBucketSize": null
+        "yaxes": [
+          {
+            "$$hashKey": "object:59",
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:60",
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
       },
       {
         "aliasColors": {},
@@ -343,7 +309,7 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 8,
-          "w": 14,
+          "w": 13,
           "x": 0,
           "y": 4
         },
@@ -431,6 +397,76 @@
         }
       },
       {
+        "cards": {
+          "cardPadding": null,
+          "cardRound": null
+        },
+        "color": {
+          "cardColor": "#b4ff00",
+          "colorScale": "sqrt",
+          "colorScheme": "interpolateOranges",
+          "exponent": 0.5,
+          "mode": "spectrum"
+        },
+        "dataFormat": "tsbuckets",
+        "datasource": "Prometheus",
+        "description": "Does NOT include requests that were not mapped to an ASP.NET Core controller!",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 10,
+          "x": 13,
+          "y": 11
+        },
+        "heatmap": {},
+        "hideZeroBuckets": false,
+        "highlightCards": true,
+        "id": 8,
+        "legend": {
+          "show": false
+        },
+        "reverseYBuckets": false,
+        "targets": [
+          {
+            "expr": "sum(increase(http_request_duration_seconds_bucket{instance =~ \"$instances\", controller =~ \"$controllers\"}[$__interval])) by (le)",
+            "format": "heatmap",
+            "instant": false,
+            "interval": "5m",
+            "intervalFactor": 1,
+            "legendFormat": "{{le}}",
+            "refId": "A"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Request duration (controller-handled requests only)",
+        "tooltip": {
+          "show": true,
+          "showHistogram": false
+        },
+        "type": "heatmap",
+        "xAxis": {
+          "show": true
+        },
+        "xBucketNumber": null,
+        "xBucketSize": null,
+        "yAxis": {
+          "decimals": 0,
+          "format": "s",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true,
+          "splitFactor": null
+        },
+        "yBucketBound": "auto",
+        "yBucketNumber": null,
+        "yBucketSize": null
+      },
+      {
         "aliasColors": {},
         "bars": false,
         "dashLength": 10,
@@ -447,7 +483,7 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 8,
-          "w": 14,
+          "w": 13,
           "x": 0,
           "y": 12
         },
@@ -636,5 +672,5 @@
     "timezone": "",
     "title": "ASP.NET Core - controller summary (Prometheus)",
     "uid": "fanout-controller",
-    "version": 6
+    "version": 1
   }
