@@ -757,7 +757,7 @@
       ]
     },
     "timezone": "",
-    "title": "ASP.NET Core - controller summary (Prometheus)",
+    "title": "Orleans (Prometheus)",
     "uid": "fanout-controller",
     "version": 1
   }
