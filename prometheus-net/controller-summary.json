@@ -17,112 +17,68 @@
     "gnetId": null,
     "graphTooltip": 0,
     "id": 26,
-    "iteration": 1622796460070,
+    "iteration": 1622799922282,
     "links": [],
     "panels": [
       {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": "Prometheus",
-        "description": "Counts all requests, both successful and failed",
+        "datasource": null,
         "fieldConfig": {
           "defaults": {
-            "links": []
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
           },
           "overrides": []
         },
-        "fill": 1,
-        "fillGradient": 0,
         "gridPos": {
-          "h": 8,
-          "w": 14,
+          "h": 4,
+          "w": 4,
           "x": 0,
           "y": 0
         },
-        "hiddenSeries": false,
-        "id": 2,
-        "legend": {
-          "alignAsTable": false,
-          "avg": false,
-          "current": false,
-          "hideEmpty": true,
-          "hideZero": true,
-          "max": false,
-          "min": false,
-          "rightSide": true,
-          "show": true,
-          "total": false,
-          "values": false
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
+        "id": 11,
         "options": {
-          "alertThreshold": true
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
         },
-        "percentage": false,
         "pluginVersion": "7.5.5",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller =~ \"$controllers\"}[3m])) by (controller)",
-            "legendFormat": "{{controller}}",
+            "exemplar": true,
+            "expr": "kube_pod_info{namespace=\"fanout\", pod=~\"fanout-helper.*\"}",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
             "refId": "A"
-          },
-          {
-            "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller = \"\"}[3m]))",
-            "legendFormat": "(None)",
-            "refId": "B"
           }
         ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "Requests received by controller",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
-        },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
-        },
-        "yaxes": [
-          {
-            "format": "reqps",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": "0",
-            "show": true
-          },
-          {
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
-        }
+        "title": "Number of pods",
+        "type": "stat"
       },
       {
         "cacheTimeout": null,
@@ -150,7 +106,7 @@
         "gridPos": {
           "h": 4,
           "w": 5,
-          "x": 14,
+          "x": 4,
           "y": 0
         },
         "id": 5,
@@ -238,7 +194,7 @@
         "gridPos": {
           "h": 4,
           "w": 5,
-          "x": 19,
+          "x": 9,
           "y": 0
         },
         "id": 9,
@@ -323,7 +279,7 @@
           "h": 12,
           "w": 10,
           "x": 14,
-          "y": 4
+          "y": 0
         },
         "heatmap": {},
         "hideZeroBuckets": false,
@@ -376,6 +332,110 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "Prometheus",
+        "description": "Counts all requests, both successful and failed",
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 14,
+          "x": 0,
+          "y": 4
+        },
+        "hiddenSeries": false,
+        "id": 2,
+        "legend": {
+          "alignAsTable": false,
+          "avg": false,
+          "current": false,
+          "hideEmpty": true,
+          "hideZero": true,
+          "max": false,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.5.5",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller =~ \"$controllers\"}[3m])) by (controller)",
+            "legendFormat": "{{controller}}",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller = \"\"}[3m]))",
+            "legendFormat": "(None)",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Requests received by controller",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "reqps",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "Prometheus",
         "description": "4xx and 5xx status codes",
         "fieldConfig": {
           "defaults": {
@@ -389,7 +449,7 @@
           "h": 8,
           "w": 14,
           "x": 0,
-          "y": 8
+          "y": 12
         },
         "hiddenSeries": false,
         "id": 3,
@@ -576,5 +636,5 @@
     "timezone": "",
     "title": "ASP.NET Core - controller summary (Prometheus)",
     "uid": "fanout-controller",
-    "version": 2
+    "version": 6
   }
